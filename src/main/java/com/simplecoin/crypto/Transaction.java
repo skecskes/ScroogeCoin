@@ -86,6 +86,10 @@ public class Transaction {
         }
     }
 
+    /**
+     * @param index the index of the input
+     * @return the message to be signed
+     */
     public byte[] getRawDataToSign(int index) {
         // ith input and all outputs
         ArrayList<Byte> sigData = new ArrayList<Byte>();
