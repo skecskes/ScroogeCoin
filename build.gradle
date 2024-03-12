@@ -1,0 +1,23 @@
+plugins {
+    id 'application'
+}
+apply plugin: 'application'
+mainClassName = 'com.simplecoin.crypto.Chain'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+
+
+run {
+    args = ['Scrooge-Coin']
+}

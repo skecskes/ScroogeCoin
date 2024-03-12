@@ -1,4 +1,4 @@
-package src.main.java.com.simplecoin;
+package com.simplecoin.crypto;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

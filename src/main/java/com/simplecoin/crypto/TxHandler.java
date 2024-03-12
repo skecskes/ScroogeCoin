@@ -1,4 +1,4 @@
-package src.main.java.com.simplecoin;
+package com.simplecoin.crypto;
 
 public class TxHandler {
 
@@ -22,6 +22,7 @@ public class TxHandler {
      */
     public boolean isValidTx(Transaction tx) {
         // IMPLEMENT THIS
+        return true;
     }
 
     /**
@@ -31,6 +32,7 @@ public class TxHandler {
      */
     public Transaction[] handleTxs(Transaction[] possibleTxs) {
         // IMPLEMENT THIS
+        return null;
     }
 
 }
