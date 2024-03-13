@@ -1,5 +1,3 @@
-package com.simplecoin.crypto;
-
 public class Chain {
 
     public static void main(String[] args) {

@@ -2,7 +2,7 @@ plugins {
     id 'application'
 }
 apply plugin: 'application'
-mainClassName = 'com.simplecoin.crypto.Chain'
+mainClassName = 'Chain'
 
 
 repositories {
