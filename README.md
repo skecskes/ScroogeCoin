@@ -65,3 +65,32 @@ outputs from transactions that were accepted in a previous call to `handleTxs()`
 Extra implementation called `MaxFeeTxHandler.java` whose `handleTxs()` method is able to find a set 
 of transactions with maximum total transaction fees -- i.e. Maximum sum over all transactions in 
 the set of (sum of input values - sum of output values).
+
+The `BlockChain` class is responsible for maintaining a blockchain. Since the entire blockchain could be
+huge, you should only keep around the most recent blocks. The exact number to store can be arbitrary, 
+as long as all the API functions are implemented.
+
+Since there can be (multiple) forks, blocks form a tree rather than a list. The design takes this
+into account. An UTXO pool is maintained and corresponding to every block on top of which a new
+block might be created.
+
+### Assumptions and hints:
+
+- A new genesis block won’t be mined. If an incomming block claims to be a genesis block
+(parent is a null hash) in the `addBlock(Block b)` function, then it should return `false`.
+- In the case of multiple blocks at the same height, the oldest block in
+`getMaxHeightBlock()` function should be returned.
+- We assume for simplicity that a coinbase transaction of a block can be spent in the next
+block mined on top of it. (This is contrary to the actual Bitcoin protocol when there is a
+“maturity” period of 100 confirmations before it can be spent).
+- Only one global Transaction Pool is maintained for the blockchain, and we keep adding transactions to
+it on receiving transactions and removing transactions from it if a new block is received or
+created. It’s okay if some transactions get dropped during a blockchain reorganization, i.e.,
+when a side branch becomes the new longest branch. Specifically, transactions present in the
+original main branch (and thus removed from the transaction pool) but absent in the side
+branch might get lost.
+- The coinbase value is kept constant at 25 bitcoins, whereas in reality, it halves roughly every 4
+years.
+- When checking for the validity of a newly received block, just checking if the transactions form a
+valid set is enough. The set need not be a maximum possible set of transactions. Also, we don’t
+need to do any proof-of-work checks.
